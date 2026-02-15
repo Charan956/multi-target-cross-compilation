@@ -1,0 +1,33 @@
+name: Multi-Target Cross Compilation CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Make scripts executable
+      run: chmod +x scripts/*.sh
+
+    - name: Build for Linux
+      run: bash scripts/build_linux.sh
+
+    - name: Build for Windows
+      run: bash scripts/build_windows.sh
+
+    - name: Build for macOS
+      run: bash scripts/build_macos.sh
+
+    - name: Build for FreeBSD
+      run: bash scripts/build_freebsd.sh
+
+    - name: Build for ChromeOS
+      run: bash scripts/build_chromeos.sh
