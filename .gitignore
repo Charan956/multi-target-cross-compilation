@@ -1,0 +1,6 @@
+# Ignore compiled outputs
+*.exe
+output_linux
+output_macos
+output_chromeos
+output_freebsd
